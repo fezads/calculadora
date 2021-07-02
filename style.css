@@ -1,0 +1,104 @@
+:root {
+  --grid-gap: 3px;
+  --button-size: 30px;
+  --border-radius: 3px;
+  --white: #fff;
+  --green: #c5e209;
+  --gray: #676767;
+  --orange: #e26400;
+  --dark: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  display: grid;
+  grid-gap: var(--grid-gap);
+  grid-template-columns: repeat(4, var(--button-size));
+  grid-template-rows: auto repeat(5, var(--button-size));
+  grid-template-areas: 
+    "field field field field"
+    ". extraRow extraRow extraRow"
+    "number number number operator"
+    "number number number operator"
+    "number number number operator"
+    "number number number operator";
+  padding: 5px;
+  border-radius: var(--border-radius);
+  background: var(--dark);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.calculator__fieldArea {
+  grid-area: field;
+}
+
+.calculator__extraRow {
+  grid-area: extraRow;
+  display: grid;
+  grid-gap: var(--grid-gap);
+  grid-template-columns: repeat(3, var(--button-size));
+}
+
+.calculator__numberArea {
+  grid-area: number;
+  display: grid;
+  grid-gap: var(--grid-gap);
+  grid-template-rows: repeat(4, var(--button-size));
+  grid-template-columns: repeat(3, var(--button-size));
+}
+
+.calculator__operatorsArea {
+  grid-area: operator;
+  display: grid;
+  grid-gap: var(--grid-gap);
+  grid-template-rows: repeat(6, var(--button-size));
+}
+
+.calculator__field {
+  display: block;
+  width: 100%;
+  height: calc(var(--button-size) + 10px);
+  padding: 5px;
+  border: 0;
+  border-radius: var(--border-radius);
+  outline: 0;
+  background-color: var(--green);
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.calculator__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: var(--border-radius);
+  background-color: var(--gray);
+  color: var(--white);
+  font-size: 16px;
+}
+
+.calculator__button--zero {
+  grid-column: 1 / span 2;
+  width: 100%;
+}
+
+.calculator__button--equal {
+  grid-row: 3 / span 2;
+  height: 100%;
+  background-color: var(--orange);
+}
